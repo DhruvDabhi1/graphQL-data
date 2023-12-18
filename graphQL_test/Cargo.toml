@@ -1,0 +1,15 @@
+[package]
+name = "graphQL_test"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+serde = "1.0.193"
+serde_json = "1.0.108"
+rocket = "0.5"
+tokio = { version = "1.35.0", features = ["full"] }
+isahc = "1.7.2"
+async-graphql-rocket = "6.0.7"
+async-graphql = { version = "6.0.7", features = ["bson", "chrono"] }
