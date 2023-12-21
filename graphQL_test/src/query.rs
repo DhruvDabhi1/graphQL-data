@@ -1,18 +1,19 @@
-use async_graphql::{Object, FieldResult, Context};
+use async_graphql::{Object, FieldResult, Context, ID};
  use async_graphql::parser::Error;
 use serde_json::json;
 use serde_json::Value as Json;
 
 
+use crate::Planet;
 use crate::schema::GetLables;
 use crate::{schema::Repository, all_functions::function_handle::{client, responce_main}};
 
-
+#[derive(Default)]
     pub struct Query;
     
     #[Object]
     impl Query {
-        async fn data(&self) -> FieldResult<String> {
+        async fn date(&self) -> FieldResult<String> {
             Ok("hello".to_string())
         }
 
@@ -58,4 +59,10 @@ use crate::{schema::Repository, all_functions::function_handle::{client, responc
           println!("{:#?}", response);
             responce_main(response)
         }
+
+          
+          #[graphql(entity)]
+    async fn get_planet_by_id(&self, #[graphql(key)] id: ID) -> Planet {
+        Planet { id }
+    }
     }

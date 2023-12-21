@@ -1,0 +1,107 @@
+mutation {
+  updateIssue(
+    input: {
+      issueId: "ISSUE_ID"
+      title: "New Title"
+      body: "New Body"
+    }
+  ) {
+    issue {
+      title
+      body
+    }
+  }
+}
+
+
+
+//craete labels
+mutation {
+  createLabel(input: {
+    repositoryId: "REPOSITORY_ID",
+    name: "LABEL_NAME",
+    color: "LABEL_COLOR"
+  }) {
+    label {
+      id
+      name
+      color
+    }
+  }
+}
+
+//update issuemutation {
+  updateIssue(rm
+    input: {
+      issueId: "ISSUE_ID"
+      title: "New Title"
+      body: "New Body"
+    }
+  ) {
+    issue {
+      title
+      body
+    }
+  }
+}
+
+//lables
+
+mutation {
+  addLabelsToLabelable(input: {
+    labelableId: "ISSUE_ID",
+    labelIds: ["LABEL_ID_1", "LABEL_ID_2"]
+  }) {
+    labelable {
+      ... on Issue {
+        id
+        title
+        labels(first: 5) {
+          nodes {
+            name
+          }
+        }
+      }
+    }
+  }
+}
+//get issue
+query {
+  repository(owner: "DhruvDabhi1", name: "graphQL-repo-practice") {
+    issues(first: 2) {
+      nodes {
+        id
+        title
+        body
+      }
+    }
+  }
+}
+
+//get user
+query{
+  viewer{
+    login
+    repository(name:"graphQL-repo-practice"){
+      id
+    }
+  }
+}
+
+
+//get label from issue
+query {
+  repository(owner: "DhruvDabhi1", name: "graphQL-repo-practice") {
+    issue(number: ISSUE_NUMBER) {
+      id
+      title
+      labels(first: 5) {
+        nodes {
+          name
+          color
+        }
+      }
+    }
+  }
+}
+

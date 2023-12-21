@@ -14,3 +14,4 @@ isahc = "1.7.2"
 async-graphql-rocket = "6.0.7"
 async-graphql = { version = "6.0.7", features = ["bson", "chrono"] }
 dotenv = "0.15.0"
+rocket_contrib = "0.4.11"
